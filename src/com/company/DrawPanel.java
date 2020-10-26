@@ -29,8 +29,8 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
         bi_g.fillRect(0, 0, getWidth(), getHeight());
         bi_g.setColor(Color.BLACK);
 
-        //drawAll(ld);
-        drawAll(ld1);
+        drawAll(ld);
+        drawAll1(ld1);
 
         g.drawImage(bi, 0, 0, null);
         bi_g.dispose();
@@ -38,8 +38,8 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
     }
 
     public void drawAll1(LineDrawer ld) {
-        drawUtils.drawSnowflake(ld, getWidth() / 2, getHeight() / 2, 120, 20);
-        ld.drawLine(getWidth() / 2, getHeight() / 2, position.x, position.y);
+        drawUtils.drawSnowflake(ld, getWidth() / 4, getHeight() / 2, 120, 20);
+        ld.drawLine(getWidth() / 4, getHeight() / 2, position.x, position.y);
     }
 
     public void drawAll(LineDrawer ld) {

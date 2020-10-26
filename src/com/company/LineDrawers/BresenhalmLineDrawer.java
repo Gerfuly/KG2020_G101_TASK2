@@ -59,7 +59,7 @@ public class BresenhalmLineDrawer implements LineDrawer {
             // Основной цикл
             length++;
             while (length > 0) {
-                pd.drawPixel(x, y, Color.cyan);
+                pd.drawPixel(x, y, Color.black);
                 y += dy;
                 d += 2 * lengthX;
                 if (d > 0) {
