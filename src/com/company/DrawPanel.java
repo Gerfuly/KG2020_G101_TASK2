@@ -36,7 +36,11 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
         drawAll(ld);
         drawAll1(ld1);
         drawAll2(ld2);
-        cd1.drawEllips(100,700,50,100,Color.blue);
+        cd1.drawCircle(110,400,100,Color.green);
+        cd1.drawEllips(110,400,50,100,Color.black);
+        cd1.drawEllips(110,400,100,50,Color.black);
+
+
 
         g.drawImage(bi, 0, 0, null);
         bi_g.dispose();
@@ -45,17 +49,17 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
     }
 
     public void drawAll1(LineDrawer ld) {
-        drawUtils.drawSnowflake(ld, getWidth() / 4, getHeight() / 2, 120, 20);
-        ld.drawLine(getWidth() / 4, getHeight() / 2, position.x, position.y);
+        drawUtils.drawSnowflake(ld, 200, 200, 80, 20);
+        ld.drawLine(200, 200, position.x, position.y);
     }
     public void drawAll2(LineDrawer ld) {
-        drawUtils.drawSnowflake(ld, getWidth() / 4 * 3, getHeight() / 2, 120, 20);
-        ld.drawLine(getWidth() / 4 * 3, getHeight() / 2, position.x, position.y);
+        drawUtils.drawSnowflake(ld, 400, 200, 80, 20);
+        ld.drawLine(400, 200, position.x, position.y);
     }
 
     public void drawAll(LineDrawer ld) {
-        drawUtils.drawSnowflake(ld, getWidth() / 2, getHeight() / 2, 120, 20);
-        ld.drawLine(getWidth() / 2, getHeight() / 2, position.x, position.y);
+        drawUtils.drawSnowflake(ld, 600, 200, 80, 20);
+        ld.drawLine(600, 200, position.x, position.y);
     }
 
     @Override

@@ -29,7 +29,7 @@ public class BresenhalmLineDrawer implements LineDrawer {
         int lengthY = Math.abs(y2 - y1);
         int length = Math.max(lengthX, lengthY);
         if (length == 0) {
-            pd.drawPixel(x1, y1, Color.black);
+            pd.drawPixel(x1, y1, Color.gray);
         }
 
         if (lengthY <= lengthX) {
@@ -59,7 +59,7 @@ public class BresenhalmLineDrawer implements LineDrawer {
             // Основной цикл
             length++;
             while (length > 0) {
-                pd.drawPixel(x, y, Color.black);
+                pd.drawPixel(x, y, Color.gray);
                 y += dy;
                 d += 2 * lengthX;
                 if (d > 0) {
