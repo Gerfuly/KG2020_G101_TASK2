@@ -1,21 +1,37 @@
 package com.company.LineDrawers;
 
 import com.company.LineDrawer;
-import com.company.PixelDrawer;
-
 import java.awt.*;
+import com.company.PixelDrawer;
 
 public class WuLineDrawer implements LineDrawer {
     private PixelDrawer pd;
+
+
     public WuLineDrawer(PixelDrawer pd) {
         this.pd = pd;
     }
     @Override
     public void drawLine(int x1, int y1, int x2, int y2) {
-        double dx = x2 - x1;
-        double dy = y2 - y1;
-        if (Math.abs(dx) > Math.abs(dy)) {
-            double k = dy / dx;
+        Color c = Color.black;
+        boolean flag = true;
+        float dx = x2 - x1;
+        float dy = y2 - y1;
+        float gradient = 0;
+        int tr = c.getRed(), tg = c.getGreen(), tb = c.getBlue();
+        if (dx == 0){
+            for (int y = y1; y < y2; ++y){
+                pd.drawPixel(x1, y, c);
+                flag = false;
+            }
+        }
+        if (dy == 0){
+            for (int x = x1; x < x2; ++x){
+                pd.drawPixel(x, y1, c);
+                flag = false;
+            }
+        }
+        if ((Math.abs(dx) > Math.abs(dy)) && flag) {
             if (x1 > x2) {
                 int t = x1;
                 x1 = x2;
@@ -24,14 +40,17 @@ public class WuLineDrawer implements LineDrawer {
                 y1 = y2;
                 y2 = t;
             }
-            for (int j = x1; j < x2; j++) {
-                double i = k * (j - x1) + y1;
-                pd.drawPixel(j, (int) i, Color.BLACK);
-                pd.drawPixel(j,(int) i+1,new Color(128,128,128));
-                pd.drawPixel(j,(int) i-1,new Color(128,128,128));
+            gradient = (float) dy / dx;
+            float intery = y1 + gradient;
+            pd.drawPixel(x1,y1,c);
+            for (int x = x1; x < x2; ++x) {
+                pd.drawPixel(x, (int)intery,new Color(tr, tg, tb, (int) (255 - fractionalPart(intery) * 255)));//Меняем прозрачность
+                pd.drawPixel(x, (int)intery + 1,new Color(tr, tg, tb, (int) (fractionalPart(intery) * 255)));
+                intery += gradient;
             }
-        } else {
-            double obrk = dx / dy;
+            pd.drawPixel(x2,y2,c);
+        }
+        else {
             if (y1 > y2) {
                 int t = y1;
                 y1 = y2;
@@ -40,14 +59,21 @@ public class WuLineDrawer implements LineDrawer {
                 x1 = x2;
                 x2 = t;
             }
-            for (int i = y1; i < y2; i++) {
-                double j = (i - y1) * obrk + x1;
-                pd.drawPixel((int) j, i, Color.BLACK);
-                pd.drawPixel((int) j+1, i, new Color(128,128,128));
-                pd.drawPixel((int) j-1, i, new Color(128,128,128));
-
+            gradient = (float) dx / dy;
+            float interx = x1 + gradient;
+            pd.drawPixel(x1,y1,c);
+            for (int y = y1; y < y2; ++y) {
+                pd.drawPixel((int)interx, y,new Color(tr, tg, tb, (int) (255 - fractionalPart(interx) * 255)));
+                pd.drawPixel((int)interx + 1, y, new Color(tr, tg, tb, (int) (fractionalPart(interx) * 255)));
+                interx += gradient;
             }
-
+            pd.drawPixel(x2,y2,c);
         }
     }
-}
+
+    private float fractionalPart(float x) {
+        int tmp = (int) x;
+        return x - tmp; //вернёт дробную часть числа
+    }
+    }
+

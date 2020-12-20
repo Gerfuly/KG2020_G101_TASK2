@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.CircleDrawers.BresenhalmCircleDrawer;
 import com.company.LineDrawers.BresenhalmLineDrawer;
 import com.company.LineDrawers.DDaLineDrawer;
 import com.company.LineDrawers.GraphicsLineDrawer;
@@ -27,6 +28,7 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
         LineDrawer ld = new DDaLineDrawer(pd);
         LineDrawer ld1 = new BresenhalmLineDrawer(pd);
         LineDrawer ld2 = new WuLineDrawer(pd);
+        CircleDrawer cd1 = new BresenhalmCircleDrawer(pd);
         bi_g.setColor(Color.WHITE);
         bi_g.fillRect(0, 0, getWidth(), getHeight());
         bi_g.setColor(Color.BLACK);
@@ -34,9 +36,11 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
         drawAll(ld);
         drawAll1(ld1);
         drawAll2(ld2);
+        cd1.drawEllips(100,700,50,100,Color.blue);
 
         g.drawImage(bi, 0, 0, null);
         bi_g.dispose();
+
 
     }
 
