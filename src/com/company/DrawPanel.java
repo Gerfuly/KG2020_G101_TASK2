@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.CircleDrawers.BresenhalmCircleDrawer;
+import com.company.CircleDrawers.WuCylce;
 import com.company.LineDrawers.BresenhalmLineDrawer;
 import com.company.LineDrawers.DDaLineDrawer;
 import com.company.LineDrawers.GraphicsLineDrawer;
@@ -29,6 +30,7 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
         LineDrawer ld1 = new BresenhalmLineDrawer(pd);
         LineDrawer ld2 = new WuLineDrawer(pd);
         CircleDrawer cd1 = new BresenhalmCircleDrawer(pd);
+        CircleDrawer cd2 = new WuCylce(pd);
         bi_g.setColor(Color.WHITE);
         bi_g.fillRect(0, 0, getWidth(), getHeight());
         bi_g.setColor(Color.BLACK);
@@ -36,6 +38,16 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
         drawAll(ld);
         drawAll1(ld1);
         drawAll2(ld2);
+        cd2.drawCircle(550,400,50,Color.GREEN);
+        cd1.drawArc(350,400,100,Math.PI/4,Math.PI/8,Color.RED);
+        cd1.drawArc(350,400,100,Math.PI/4,Math.PI/8*5,Color.RED);
+        cd1.drawArc(350,400,100,Math.PI/4,Math.PI/8*9,Color.RED);
+        cd1.drawArc(350,400,100,Math.PI/4,Math.PI/8*13,Color.RED);
+        cd1.drawArc(350,400,80,Math.PI/4,Math.PI/8*3,Color.blue);
+        cd1.drawArc(350,400,80,Math.PI/4,Math.PI/8*7,Color.blue);
+        cd1.drawArc(350,400,80,Math.PI/4,Math.PI/8*11,Color.blue);
+        cd1.drawArc(350,400,80,Math.PI/4,Math.PI/8*15,Color.blue);
+
         cd1.drawCircle(110,400,100,Color.green);
         cd1.drawEllips(110,400,50,100,Color.black);
         cd1.drawEllips(110,400,100,50,Color.black);

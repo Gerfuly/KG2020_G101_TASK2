@@ -22,7 +22,15 @@ public class BresenhalmCircleDrawer implements CircleDrawer {
             pd.drawPixel(x + (int) dx, y + (int) dy, c);
         }
     }
-
+    public void drawArc(int x, int y, int r, double p,double p0, Color c){
+        int n = (int) (p*r);
+        double da = p / n;
+        for (int i = 0; i < n; i++) {
+            double dx = r * Math.cos(da * i+p0);
+            double dy = r * Math.sin(da * i+p0);
+            pd.drawPixel(x + (int) dx, y + (int) dy, c);
+        }
+    }
     @Override
     public void drawEllips(int x1, int y1, int rx, int ry, Color c) {
         for (int i=-rx; i<=rx; i++){
