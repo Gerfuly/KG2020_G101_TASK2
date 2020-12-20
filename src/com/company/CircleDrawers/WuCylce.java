@@ -39,8 +39,4 @@ public class WuCylce implements CircleDrawer {
 
     }
 
-    private float fractionalPart(float x) {
-        int tmp = (int) x;
-        return x - tmp; //вернёт дробную часть числа
-    }
 }
